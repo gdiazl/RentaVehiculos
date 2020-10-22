@@ -39,15 +39,11 @@ class PagesController extends Controller
 
     }
 
-   public function crear(Request $request){
-    //return $request->all();
+   public function renta(){
+  }
 
-    /* $nuevodato = new App\Cliente;
-     $nuevodato->nombre = $request->nombre;
-     $nuevodato->apellido = $request->apellido;
-     $nuevodato->save();
-     return back()->with('mensaje','Se inserto dato');*/
-   }
+  public function rentaCrear(){
+  }
   
 
 }
