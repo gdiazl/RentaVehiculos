@@ -1,6 +1,6 @@
 <?php    
 $cuenta=1;
-?>      
+?>     
 
 <!doctype html>
 <html lang="en">
@@ -80,10 +80,10 @@ $cuenta=1;
       <img src="{{ $item->img}}" style="max-width:14rem; width:auto;height:auto;" alt="..."> <!--imagen de vehiculo-->
         
       <div class="caption">
-        <h3> {{ $item->nombre }} </h3> <!--nombre de Vehiculo-->
+        <h3> {{ $item->marca }} </h3> <!--nombre de Vehiculo-->
 
-        <p class="card-text"> {{ $item->caracteristicas }} </p><!--Caracteristica de vehiculo-->
-        <p class="card-text"> {{ $item->valor}} </p><!--precio de vehiculo-->
+        <p class="card-text"> {{ $item->detalle }} </p><!--Caracteristica de vehiculo-->
+        <p class="card-text"> {{ $item->modelo}} </p><!--precio de vehiculo-->
 
         <div class="float-right">
         <p><a href="{{route('test')}}" class="btn btn-danger" role="button" >
@@ -118,15 +118,8 @@ $cuenta=1;
            <td>
               <a href="{{route('test')}}"><img class="" src="{{ $item->img}}" style="width: 18rem;" alt=""></a>  
               
-                <h4>
-                  <a href="">{{ $item->nombre }}</a>
-                </h4>
 
-                <h5>caracteristicas</h5>
-                <p class="card-text">{{ $item->caracteristicas }}</p>
-
-                <h5>valor</h5>
-                <p class="card-text">{{ $item->valor}}</p>
+                
           </td> 
         </tr>  
         @endforeach

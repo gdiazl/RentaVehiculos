@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App;
 
@@ -9,18 +10,28 @@ class PagesController extends Controller
     //
     const Agregar=3;
     
-    public function inicio(){
-        //$users=DB::select('select * from usuario');   
-        //$cliente = App\Cliente::all();
-         
-          /*$buscar=$rts->get('buscame');*/
-          /*$cliente = App\Vehiculo::all()->where('nombre','like','%'.$buscar.'%');*/
+    public function inicio(Request $request){
+      
           
-          $cliente=App\Vehiculo::all();
-          
-          
-        return view('vehiculo', compact('cliente','nuevo'));
-    }
+     
+
+       // $cliente = Vehiculo::where('marca','LIKE','%'.$busqueda.'%')->orderBy('id','asc')->get();
+        
+        $cliente = DB::table('vehiculos')
+        ->join('tipo_vehiculos','vehiculos.id_tipo_vehiculo','=','tipo_vehiculos.id_tipo_vehiculo')
+        //->join('renta','vehiculos.id','=','rentas.id')
+        ->select('vehiculos.*','tipo_vehiculos.descripcion')
+        //->where('marca','LIKE','%'.$busqueda.'%')->orderBy('id','asc')
+      ->get();
+
+
+
+        //dd($busqueda);
+        return view('vehiculo',['cliente'=>$cliente, 'search']);
+     
+    
+   
+}
 
     public function test(){
 
@@ -31,11 +42,11 @@ class PagesController extends Controller
    public function crear(Request $request){
     //return $request->all();
 
-     $nuevodato = new App\Cliente;
+    /* $nuevodato = new App\Cliente;
      $nuevodato->nombre = $request->nombre;
      $nuevodato->apellido = $request->apellido;
      $nuevodato->save();
-     return back()->with('mensaje','Se inserto dato');
+     return back()->with('mensaje','Se inserto dato');*/
    }
   
 
