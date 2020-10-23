@@ -11,33 +11,39 @@ class PagesController extends Controller
     const Agregar=3;
     
     public function inicio(Request $request){
-      
-          
-     
-
-       // $cliente = Vehiculo::where('marca','LIKE','%'.$busqueda.'%')->orderBy('id','asc')->get();
         
+      if($request){
+        $busqueda = trim($request -> get('search') );            
+       // $cliente = Vehiculo::where('marca','LIKE','%'.$busqueda.'%')->orderBy('id','asc')->get();
         $cliente = DB::table('vehiculos')
-        ->join('tipo_vehiculos','vehiculos.id_tipo_vehiculo','=','tipo_vehiculos.id_tipo_vehiculo')
+        ->join('tipo_vehiculos','vehiculos.id_tipo_vehiculo','=','tipo_vehiculos.id_tipo')
         //->join('renta','vehiculos.id','=','rentas.id')
         ->select('vehiculos.*','tipo_vehiculos.descripcion')
-        //->where('marca','LIKE','%'.$busqueda.'%')->orderBy('id','asc')
+        ->where('marca','LIKE','%'.$busqueda.'%')->orderBy('id_vehiculo','asc')
       ->get();
 
+        return view('index',['cliente'=>$cliente,'search'=>$busqueda]);
 
-
-        //dd($busqueda);
-        return view('vehiculo',['cliente'=>$cliente, 'search']);
-     
-    
-   
+     }
+             
 }
 
-    public function test(){
+    public function test($id){
 
-        return view('procesorenta');
+      if($id_vehiculo){
+        $busqueda = $id_vehiculo;
 
+        $cliente = DB::table('vehiculos')
+        ->where('id_vehiculo','LIKE','%'.$busqueda.'%')
+        ->join('tipo_vehiculos','vehiculos.id_tipo_vehiculo','=','tipo_vehiculos.id_tipo')
+        ->select('vehiculos.*','tipo_vehiculos.descripcion','tipo_vehiculos.precio')
+        ->get();
+     /*$cliente = Vehiculo::where('id','LIKE',$busqueda)->get();*/
+
+          return view('procesorenta',['cadena'=>$cliente]);
+        }
     }
+
 
    public function renta(){
   }
