@@ -45,8 +45,7 @@
    </center>
   </div>
 
-  
-</div>
+
     <div>
     <form class="form-inline ml-3 float-right">
       <input class="form-control form-control-navbar" name="search" type="search" placeholder="Busca vehiculo" aria-label="Search">
