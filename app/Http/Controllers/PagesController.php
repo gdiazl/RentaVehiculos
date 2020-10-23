@@ -34,8 +34,8 @@ class PagesController extends Controller
         $busqueda = $id_vehiculo;
 
         $cliente = DB::table('vehiculos')
-        ->where('id_vehiculo','LIKE','%'.$busqueda.'%')
-        ->join('tipo_vehiculos','vehiculos.id_tipo_vehiculo','=','tipo_vehiculos.id_tipo')
+        ->where('id','LIKE','%'.$busqueda.'%')
+        ->join('tipo_vehiculos','vehiculos.id_tipo_vehiculo','=','tipo_vehiculos.id_tipo_vehiculo')
         ->select('vehiculos.*','tipo_vehiculos.descripcion','tipo_vehiculos.precio')
         ->get();
      /*$cliente = Vehiculo::where('id','LIKE',$busqueda)->get();*/

@@ -24,7 +24,7 @@
                   <p class="card-text"> {{ $item->detalle }} </p><!--Caracteristica de vehiculo-->
                   <p class="card-text"> {{ $item->modelo}} </p><!--precio de vehiculo-->
                 </div>
-                <p><a href="{{Route('renta',['valor2'=>$item->id])}}" class="btn btn-danger"  name="obtener" role="button" >
+                <p><a href="{{Route('renta',['valor'=>$item->id])}}" class="btn btn-danger"  name="obtener" role="button" >
                   Reservar</a>
                 </p>
               </div>
