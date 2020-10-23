@@ -45,10 +45,26 @@ class PagesController extends Controller
     }
 
 
-   public function renta(){
-  }
+    public function renta($id){
+            
+      $id_vehiculo = $id;
 
-  public function rentaCrear(){
+      $cliente = DB::table('vehiculos')
+     ->where('id','LIKE','%'.$id_vehiculo.'%')
+         ->join('tipo_vehiculos','vehiculos.id_tipo_vehiculo','=','tipo_vehiculos.id_tipo_vehiculo')
+         ->select('vehiculos.*','tipo_vehiculos.descripcion','tipo_vehiculos.precio')
+         ->get();
+
+         return view('formularioRenta',['cadena'=>$cliente]);           
+          
+    }
+
+    public function rentaCrear(Request $request){       
+     
+
+        app\renta::create($request->all());
+       return('Automovil rentado');
+       
   }
   
 
