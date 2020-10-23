@@ -40,7 +40,7 @@ class PagesController extends Controller
         ->get();
      /*$cliente = Vehiculo::where('id','LIKE',$busqueda)->get();*/
 
-          return view('procesorenta',['cadena'=>$cliente]);
+          return view('detalleVehiculo',['cadena'=>$cliente]);
         }
     }
 
