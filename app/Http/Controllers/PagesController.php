@@ -16,10 +16,10 @@ class PagesController extends Controller
         $busqueda = trim($request -> get('search') );            
        // $cliente = Vehiculo::where('marca','LIKE','%'.$busqueda.'%')->orderBy('id','asc')->get();
         $cliente = DB::table('vehiculos')
-        ->join('tipo_vehiculos','vehiculos.id_tipo_vehiculo','=','tipo_vehiculos.id_tipo')
+        ->join('tipo_vehiculos','vehiculos.id_tipo_vehiculo','=','tipo_vehiculos.id_tipo_vehiculo')
         //->join('renta','vehiculos.id','=','rentas.id')
         ->select('vehiculos.*','tipo_vehiculos.descripcion')
-        ->where('marca','LIKE','%'.$busqueda.'%')->orderBy('id_vehiculo','asc')
+        ->where('marca','LIKE','%'.$busqueda.'%')->orderBy('id','asc')
       ->get();
 
         return view('index',['cliente'=>$cliente,'search'=>$busqueda]);
@@ -28,7 +28,7 @@ class PagesController extends Controller
              
 }
 
-    public function test($id){
+    public function test($id_vehiculo){
 
       if($id_vehiculo){
         $busqueda = $id_vehiculo;

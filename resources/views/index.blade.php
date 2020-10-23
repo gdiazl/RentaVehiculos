@@ -41,7 +41,7 @@
  
   <div class="page-header" >
     <center>
-    <h1 style="color:white;"">NUESTRA FLOTA</h1>
+    <h1 style="color:white;">NUESTRA FLOTA</h1>
    </center>
   </div>
 
@@ -70,7 +70,7 @@
                 <div class="float-right">
                   <div class="card border-left-dark">
                
-                  <img src="{{ $item->img}}" width="425" height="250" alt="..."> <!--imagen de vehiculo-->
+                  <img src="{{ $item->img}}" width="100%" height="50%" alt="..."> <!--imagen de vehiculo-->
                     
                   <div class="caption">
                     <h1><strong> {{ $item->marca }} </strong></h1> <!--nombre de Vehiculo-->
@@ -81,7 +81,7 @@
                     <div class="float-right">
 
                 
-                    <p><a href="{{Route('test',['valor'=>$item->id_vehiculo])}}" class="btn btn-danger"  name="obtener" role="button" >
+                    <p><a href="{{Route('test',['valor'=>$item->id])}}" class="btn btn-danger"  name="obtener" role="button" >
                       Detalle</a>
                     </p>
                     
