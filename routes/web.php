@@ -15,7 +15,8 @@ use Illuminate\Support\Facades\Route;
 
 */
 
-Route::get('/',  'PagesController@inicio');
+Route::get('/',  'PagesController@inicio')->name('inicio');
+Route::get('/muestrareservas',  'PagesController@buscar')->name('buscar');
 Route::post('/', 'PagesController@crear')->name('clientes.crear');
 Route::get('/detalleVehiculo/{valor}', 'PagesController@test')->name('test');
 Route::get('/formulario_renta/{valor2}', 'PagesController@renta')->name('renta');

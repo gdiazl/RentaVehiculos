@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Renta;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App;
@@ -26,6 +27,25 @@ class PagesController extends Controller
 
      }
              
+}
+
+
+
+public function buscar( Request $request){
+  //echo Form::text('username');
+  //$respuesta = trim($dato->get('correo'));
+  //dd($respuesta); 
+    $respuesta = trim($request -> get('correo') );            
+    if($respuesta){
+    $reserva = Renta::where('email','LIKE','%'.$respuesta.'%')->orderBy('id','asc')->get();
+    //$reserva=DB::table('rentas')
+    //->where('email','LIKE','%'.$respuesta)->get();
+  
+    return view('muestrareservas',['correo'=>$reserva,'search'=>$respuesta]);
+    }else{
+
+      return('No Cuenta con reservas');
+    }
 }
 
     public function test($id_vehiculo){

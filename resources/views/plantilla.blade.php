@@ -7,18 +7,27 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
-    <title>Proceso inserccion</title>
+    <title>Renta de Vehiculos</title>
+    
+
   </head>
 
   <body>
     <!--inicio codigo menu-->
-    <nav class="navbar navbar-expand navbar-white bg-dark topbar mb-4 static-top shadow">
+    <nav class="navbar navbar-expand navbar-dark bg-primary static-top shadow">
     
+      <style type="text/css">
+        .navbar {
+           min-height: 120px;
+           font-size: 50px;
+          }
+        </style>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="{{route('inicio')}}">Inicio <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Sobre Notrosos</a>
@@ -34,7 +43,8 @@
     </nav>
     <!--final codigo menu-->
   
-    <div class="container">
+    <div class="container-fluid">
+      
         @yield('seccion')
     </div>
 

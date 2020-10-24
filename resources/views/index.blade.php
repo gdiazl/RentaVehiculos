@@ -41,10 +41,22 @@
  
   <div class="page-header" >
     <center>
-    <h1 style="color:white;">NUESTRA FLOTA</h1>
+    <h1 style="color:white;"">NUESTRA FLOTA</h1>
    </center>
   </div>
 
+  <div>    
+    <form class="form-inline ml-3 float-left" method="GET" action="{{Route('buscar')}}">
+      <input class="form-control form-control-navbar"  name="correo"  type="search" placeholder="Agregar correo" aria-label="Search">
+      <!--<a href="{{Route('buscar')}}" class="btn btn-danger" role="button" type="submit">
+        buscar reserva</a>-->
+        <button class="btn btn-navbar bg-warning" type="submit">
+          buscar
+          </button>
+    </form>
+    </div>
+
+</div>
 
     <div>
     <form class="form-inline ml-3 float-right">
@@ -70,7 +82,7 @@
                 <div class="float-right">
                   <div class="card border-left-dark">
                
-                  <img src="{{ $item->img}}" width="100%" height="50%" alt="..."> <!--imagen de vehiculo-->
+                  <img src="{{ $item->img}}" width="425" height="250" alt="..."> <!--imagen de vehiculo-->
                     
                   <div class="caption">
                     <h1><strong> {{ $item->marca }} </strong></h1> <!--nombre de Vehiculo-->
