@@ -14,11 +14,9 @@ class PagesController extends Controller
     public function inicio(Request $request){
         
       if($request){
-        $busqueda = trim($request -> get('search') );            
-       // $cliente = Vehiculo::where('marca','LIKE','%'.$busqueda.'%')->orderBy('id','asc')->get();
+        $busqueda = trim($request -> get('search') );  
         $cliente = DB::table('vehiculos')
         ->join('tipo_vehiculos','vehiculos.id_tipo_vehiculo','=','tipo_vehiculos.id_tipo_vehiculo')
-        //->join('renta','vehiculos.id','=','rentas.id')
         ->select('vehiculos.*','tipo_vehiculos.descripcion')
         ->where('marca','LIKE','%'.$busqueda.'%')->orderBy('id','asc')
       ->get();
@@ -48,21 +46,34 @@ public function buscar( Request $request){
     }
 }
 
-    public function test($id_vehiculo){
+public function test($id_vehiculo){
 
-      if($id_vehiculo){
-        $busqueda = $id_vehiculo;
+  if($id_vehiculo){
+    $busqueda = $id_vehiculo;
 
-        $cliente = DB::table('vehiculos')
-        ->where('id','LIKE','%'.$busqueda.'%')
-        ->join('tipo_vehiculos','vehiculos.id_tipo_vehiculo','=','tipo_vehiculos.id_tipo_vehiculo')
-        ->select('vehiculos.*','tipo_vehiculos.descripcion','tipo_vehiculos.precio')
-        ->get();
-     /*$cliente = Vehiculo::where('id','LIKE',$busqueda)->get();*/
+  $cliente = DB::table('vehiculos')
+  ->where('vehiculos.id','LIKE','%'.$busqueda.'%')
+  ->join('rentas','vehiculos.id','=','rentas.id')
+  ->join('tipo_vehiculos','vehiculos.id_tipo_vehiculo','=','tipo_vehiculos.id_tipo_vehiculo')
+  ->select('vehiculos.id', 'vehiculos.marca','vehiculos.detalle','vehiculos.modelo', 'tipo_vehiculos.descripcion','vehiculos.color','vehiculos.transmision','vehiculos.pasajeros', 'tipo_vehiculos.precio',DB::raw('MAX(rentas.no_reserva) as mayor'))
+  ->groupBy('vehiculos.id', 'vehiculos.marca','vehiculos.detalle','vehiculos.modelo', 'tipo_vehiculos.descripcion','vehiculos.color','vehiculos.transmision','vehiculos.pasajeros', 'tipo_vehiculos.precio')
+  ->get();
 
-          return view('detalleVehiculo',['cadena'=>$cliente]);
-        }
+  $imagen = DB::table('vehiculos')
+  ->where('vehiculos.id','LIKE','%'.$busqueda.'%')
+  ->select('vehiculos.img')
+  ->get();
+
+  $fecha = DB::table('rentas')
+      ->where('rentas.id','LIKE','%'.$busqueda.'%')
+      ->select('rentas.fecha_entrega','rentas.fecha_devolucion')
+      ->get();
+
+
+
+      return view('detalleVehiculo',['cadena'=>$cliente,'cadenaImagen'=>$imagen,'cadenaFecha'=>$fecha]);
     }
+}
 
 
     public function renta($id){
@@ -86,6 +97,5 @@ public function buscar( Request $request){
        return('Automovil rentado');
        
   }
-  
-
+ 
 }

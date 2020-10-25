@@ -15,8 +15,10 @@
               <div >
                 <div class="card border-left-dark">
                 
-                <img src="{{ $item->img}}" width="425" height="250" alt="..."> <!--imagen de vehiculo-->
-                  
+                @foreach($cadenaImagen as $imagen)
+                <img src="{{ $imagen->img}}" width="425" height="250" alt="..."> <!--imagen de vehiculo-->
+                @endforeach
+
                 <div class="caption">
                   
                   <h1><strong> {{ $item->marca }} </strong></h1> <!--nombre de Vehiculo-->
@@ -71,7 +73,15 @@
                                           <div class="col-sm-6" style="background-color:lavenderblush;"><center>{{ $item->precio}}</center></div>   
               
                                       </div>
-      
+                                      
+                                     </br>
+                         @foreach($cadenaFecha as $fecha)
+                         <div class="col-sm-6" style="background-color:lavenderblush;"><center>{{ $fecha->fecha_entrega}}</center></div>
+                         <div class="col-sm-6" style="background-color:lavenderblush;"><center>{{ $fecha->fecha_devolucion}}</center></div>
+                          @endforeach
+                                    
+                                     
+                                     
                   @endforeach
        
               </div><!--final del container -->
