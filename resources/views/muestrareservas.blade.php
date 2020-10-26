@@ -8,12 +8,22 @@
 <br>
 
 <div class="container-fluid">
-  
+
+  <center>
+  <h2>
+    @if($emailb)
+        <div class="alert alert-primary" role="alert">
+            lista de reservas con nombre de correo: '{{ $emailb}}'
+        </div>
+    @endif
+  </h2>
+  </center>
   <br>
   <br>
   <br>
   
     @foreach($correo->chunk(1) as $separa)
+ 
     
                     <div class="row">                     
                       <div class="col-sm-1" style="background-color:lavender;"><center><strong>RESERVA</strong></center></div>
