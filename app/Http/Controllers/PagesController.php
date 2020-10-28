@@ -51,6 +51,13 @@ public function test($id_vehiculo){
   if($id_vehiculo){
     $busqueda = $id_vehiculo;
 
+  $clientes = DB::table('vehiculos')
+  ->where('id','LIKE','%'.$busqueda.'%')
+  ->join('tipo_vehiculos','vehiculos.id_tipo_vehiculo','=','tipo_vehiculos.id_tipo_vehiculo')
+  ->select('vehiculos.*','tipo_vehiculos.descripcion','tipo_vehiculos.precio')
+  ->get();
+    
+
   $cliente = DB::table('vehiculos')
   ->where('vehiculos.id','LIKE','%'.$busqueda.'%')
   ->join('rentas','vehiculos.id','=','rentas.id')
@@ -69,9 +76,38 @@ public function test($id_vehiculo){
       ->select('rentas.fecha_entrega','rentas.fecha_devolucion')
       ->get();
 
+      $conteo = DB::table('rentas')
+    ->where('rentas.id','LIKE','%'.$busqueda.'%')
+    ->select(DB::raw('count(*) as total'))
+    ->groupBy()
+    ->get();
+
+
+      return view('detalleVehiculo',['cadena'=>$cliente,'cadenaImagen'=>$imagen,'cadenaFecha'=>$fecha,'conteos'=>$conteo,'cadenas'=>$clientes]);
+    
+    }else{
+      $busqueda = $id_vehiculo;
+      
+      $cliente = DB::table('vehiculos')
+     ->where('vehiculos.id','LIKE','%'.$busqueda.'%')
+     ->join('tipo_vehiculos','vehiculos.id_tipo_vehiculo','=','tipo_vehiculos.id_tipo_vehiculo')
+     ->select('vehiculos.id', 'vehiculos.marca','vehiculos.detalle','vehiculos.modelo', 'tipo_vehiculos.descripcion','vehiculos.color','vehiculos.transmision','vehiculos.pasajeros', 'tipo_vehiculos.precio')
+     ->get();
+
+     $imagen = DB::table('vehiculos')
+  ->where('vehiculos.id','LIKE','%'.$busqueda.'%')
+  ->select('vehiculos.img')
+  ->get();
+
+  $fecha = DB::table('rentas')
+      ->where('rentas.id','LIKE','%'.$busqueda.'%')
+      ->select('rentas.fecha_entrega','rentas.fecha_devolucion')
+      ->get();
+
 
 
       return view('detalleVehiculo',['cadena'=>$cliente,'cadenaImagen'=>$imagen,'cadenaFecha'=>$fecha]);
+
     }
 }
 
@@ -85,6 +121,8 @@ public function test($id_vehiculo){
          ->join('tipo_vehiculos','vehiculos.id_tipo_vehiculo','=','tipo_vehiculos.id_tipo_vehiculo')
          ->select('vehiculos.*','tipo_vehiculos.descripcion','tipo_vehiculos.precio')
          ->get();
+
+        
 
          return view('formularioRenta',['cadena'=>$cliente]);           
           

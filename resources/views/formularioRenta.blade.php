@@ -92,15 +92,16 @@
       <div class="form-group">
         <label for="lbl_fn" class="control-label col-sm-2">Fecha entrega:</label>
         <div class="col-sm-10">
-           <input type="date" name="fecha_entrega" id="fecha_entrega" class="form-control" placeholder="Ingresar fecha" required>
+           <input type="date" name="fecha_entrega" id="fecha_entrega" class="form-control" required>
         </div>
       </div>
       <div class="form-group">
         <label for="lbl_fn" class="control-label col-sm-2">Fecha devolucion:</label>
         <div class="col-sm-10">
-           <input type="date" name="fecha_devolucion" id="fecha_devolucion" class="form-control" placeholder="Ingresar fecha" required>
+           <input type="date" name="fecha_devolucion" id="fecha_devolucion" class="form-control" required>
         </div>
       </div>
+
       <div class="form-group">
         <label for="lbl_direccion" class="control-label col-sm-2">Tipo de pago:</label>
         <div class="col-sm-10">

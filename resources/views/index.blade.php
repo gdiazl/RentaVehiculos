@@ -16,13 +16,13 @@
   </ol>
   <div class="carousel-inner" role="listbox">
     <div class="carousel-item active">
-      <img class="d-block img-fluid" src="https://images4.alphacoders.com/967/thumb-1920-96758.jpg" style="width:1200px; height:600px" alt="First slide">
+      <img class="d-block img-fluid" src="https://images4.alphacoders.com/967/thumb-1920-96758.jpg" style="width:1000px; height:500px" alt="First slide">
     </div>
     <div class="carousel-item">
-      <img class="d-block img-fluid" src="https://images.alphacoders.com/147/thumb-1920-147481.jpg" style="width:1200px; height:600px" alt="Second slide">
+      <img class="d-block img-fluid" src="https://images.alphacoders.com/147/thumb-1920-147481.jpg" style="width:1000px; height:500px" alt="Second slide">
     </div>
     <div class="carousel-item">
-      <img class="d-block img-fluid" src="https://images2.alphacoders.com/209/thumb-1920-209460.jpg" style="width:1200px; height:600px" alt="Third slide">
+      <img class="d-block img-fluid" src="https://images2.alphacoders.com/209/thumb-1920-209460.jpg" style="width:1000px; height:500px" alt="Third slide">
     </div>
   </div>
   <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -82,7 +82,7 @@
                 <div class="float-right">
                   <div class="card border-left-dark">
                
-                  <img src="{{ $item->img}}" width="425" height="250" alt="..."> <!--imagen de vehiculo-->
+                  <img src="{{ $item->img}}" width="100%" height="50%" alt="..."> <!--imagen de vehiculo-->
                     
                   <div class="caption">
                     <h1><strong> {{ $item->marca }} </strong></h1> <!--nombre de Vehiculo-->
@@ -93,7 +93,7 @@
                     <div class="float-right">
 
                 
-                    <p><a href="{{Route('test',['valor'=>$item->id])}}" class="btn btn-danger"  name="obtener" role="button" >
+                    <p><a href="{{Route('test',['valor'=>$item->id])}}" class="btn btn-success"  name="obtener" role="button" >
                       Detalle</a>
                     </p>
                     
