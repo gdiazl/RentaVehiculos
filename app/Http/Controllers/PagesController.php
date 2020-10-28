@@ -39,7 +39,7 @@ public function buscar( Request $request){
     //$reserva=DB::table('rentas')
     //->where('email','LIKE','%'.$respuesta)->get();
   
-    return view('muestrareservas',['correo'=>$reserva,'search'=>$respuesta]);
+    return view('muestrareservas',['correo'=>$reserva,'emailb'=>$respuesta]);
     }else{
 
       return('No Cuenta con reservas');
